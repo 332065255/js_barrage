@@ -4,8 +4,8 @@ var danmu_css=function(txt,index){
 	this.creatui();
 };
 danmu_css.prototype.move=function(){
-	this.left-=2;
-	this.dom.css('transform','translateX('+this.left+'px)')
+//	this.left-=2;
+//	this.dom.css('transform','translateX('+this.left+'px)')
 };
 danmu_css.prototype.x=function(){
 	return this.left;
@@ -23,7 +23,9 @@ danmu_css.prototype.canDes=function(){
 }
 danmu_css.prototype.creatui=function(){
 	this.dom=$('<div style="white-space:pre;position:absolute;left:'+$('#'+danmuku._divid).width()+'px;top:'+this.height+'px;color:white;text-shadow: #000000;text-shadow: rgb(0, 0, 0) 1px 0px 1px, rgb(0, 0, 0) 0px 1px 1px, rgb(0, 0, 0) 0px -1px 1px, rgb(0, 0, 0) -1px 0px 1px;">'+this.text+'</div>');
-	this.dom.css('transform','translateX('+0+'px)')
+	this.dom.css('transform','translateX(0%)')
+	this.dom.css('left','100%')
+	this.dom.css('animation','animations 10s linear')
 	this.left=0;
 	$('#'+danmuku._divid).append(this.dom)
 };
@@ -66,7 +68,7 @@ danmu_css.prototype.destory=function(){
 					for(let j=0;j<arr2.length;j++)
 					{
 						txt2=arr2[j];
-						txt2.move();
+//						txt2.move();
 					}
 					for(j=0;j<arr2.length;j++)
 					{
