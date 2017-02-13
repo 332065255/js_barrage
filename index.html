@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript" src="js/barrage.js" ></script>
+		<script type="text/javascript" src="js/barrage_css.js" ></script>
+		<script>
+			var danmu_se=null;
+			$(function(){
+				$('select').change(function(e){
+					danmu_se.clear();
+//					console.log($('select').attr('value'),)
+					switch(e.target.selectedOptions[0].value){
+						case "time":
+							danmu_se=danmuku;
+							break;
+						case 'css':
+						danmu_se=danmuku_css;
+						break;
+					}
+					danmu_se.init('danmuShow');
+				})
+				danmu_se=danmuku;
+//				cc_flvLive.init('flvjs','EB602EE884C9A9AE','AE3C4B5BCABAA3AE9C33DC5901307461');   //外网
+//				cc_flvLive.init('flvjs','C783F0F7CB77E1F3','69310FC93659D9179C33DC5901307461');   //内网
+				danmu_se.init('danmuShow');
+				$('#sendDanmu').click(function(){
+					danmu_se.addDanMu('富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善')
+				})
+			})
+		</script>
+		<style>
+			#main{
+				width: 800px;
+				height: 100%;
+				margin: 0 auto;
+			}
+			#danmuDiv{
+				width: 100%;
+				height: 400px;
+				background-color: darkgray;
+				margin: auto;
+				position: relative;
+			}
+			#danmuShow{
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			#desc{
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			#desc span{
+				font-size: 24px;
+				color: #ffffff;
+				display: block;
+				/*margin: 50% 50%;
+				transform: translate(-50%,-50%);*/
+				left: 50%;
+				top: 50%;
+				position: absolute;
+				margin-left: -50px;
+				margin-top: -10px;
+			}
+			#jsSelect{
+				
+				width: 300px;
+				height: 30px;
+				/*border: solid 0px ;*/
+				border: solid 1px #000000;
+				border-radius: 0px;
+				display: block;
+			}
+			#danmuShow{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			#edit{
+				width: 100%;
+				margin-top: 20px;
+				
+			}
+			#sendDanmu{
+				width: 100px;
+				height: 40px;
+				margin-top: 20px;
+				font-size: 18px;
+				padding: 5px 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id='danmuDiv'>
+				<div id='danmuShow'></div>
+				<div id='desc'><span>弹幕展示区</span></div>
+			</div>
+			<div id="edit">
+				<select id="jsSelect">
+					<option value="time">时间线形式的弹幕</option>
+					<option value="css">css动画形式的弹幕</option>
+					
+				</select>
+				<input type="button" value="发送弹幕" id="sendDanmu"/>
+			</div>
+		</div>
+	</body>
+</html>
